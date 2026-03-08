@@ -66,6 +66,17 @@ function Features() {
             </div>
           ))}
         </div>
+
+        <div className="features-cta">
+          <a href="https://app.lemify.com.br/signup" className="btn btn-primary btn-lg btn-emphasis-hover">
+            Agendar demonstração
+            <svg className="btn-emphasis-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20 Q 6 15 4 8" stroke="#d8fe6a" strokeWidth="3" strokeLinecap="round" />
+              <path d="M18 18 Q 20 12 18 4" stroke="#d8fe6a" strokeWidth="3" strokeLinecap="round" />
+              <path d="M26 20 Q 30 15 32 8" stroke="#d8fe6a" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   );

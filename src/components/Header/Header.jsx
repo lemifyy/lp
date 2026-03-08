@@ -5,6 +5,7 @@ import './Header.css';
 function Header({ scrolled }) {
   const [activeSection, setActiveSection] = useState('');
   const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0, opacity: 0 });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
   const linksRef = useRef({});
 
@@ -64,6 +65,11 @@ function Header({ scrolled }) {
 
   const handleClick = (e, sectionId) => {
     setActiveSection(sectionId);
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -122,6 +128,28 @@ function Header({ scrolled }) {
           <a className="btn btn-primary" href="https://app.lemify.com.br/signup">
             Cadastre-se
           </a>
+          <button className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`} onClick={toggleMobileMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+        <nav className="mobile-nav">
+          <a href="#" className={activeSection === '' ? 'active' : ''} onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setActiveSection('');
+            setIsMobileMenuOpen(false);
+          }}>Início</a>
+          <a href="#features" className={activeSection === 'features' ? 'active' : ''} onClick={(e) => handleClick(e, 'features')}>Recursos</a>
+          <a href="#showcase" className={activeSection === 'showcase' ? 'active' : ''} onClick={(e) => handleClick(e, 'showcase')}>Agentes</a>
+        </nav>
+        <div className="mobile-actions">
+          <a className="btn btn-outline" href="https://app.lemify.com.br/login">Entrar</a>
+          <a className="btn btn-primary" href="https://app.lemify.com.br/signup">Cadastre-se</a>
         </div>
       </div>
     </header>

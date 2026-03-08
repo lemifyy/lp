@@ -42,8 +42,8 @@
 }
 
 .hero-flow-label {
-    font-size: clamp(32px, 6vw, 48px);
-    font-weight: 700;
+    font-size: clamp(30px, 6vw, 38px);
+    font-weight: 600;
     color: var(--primary);
     position: relative;
     z-index: 10;

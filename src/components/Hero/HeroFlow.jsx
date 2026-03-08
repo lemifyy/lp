@@ -89,7 +89,7 @@ function HeroFlow() {
     const margin = isMobile ? 20 : 40; // margem em cada lado
     const imageWidth = width - (margin * 2);
     const centerX = width / 2;
-    const spacing = isMobile ? 60 : 100;
+    const spacing = isMobile ? 75 : 100;
     const topY = 0;
     const halfNode = nodeSize / 2;
 
@@ -124,7 +124,7 @@ function HeroFlow() {
         <div className="section-header">
           <div className="hero-flow-badge-wrapper">
             <span className={`hero-flow-heading-badge ${isScrolled || isMounted ? 'animated' : ''}`}>
-              <span className="hero-flow-label">sem caos</span>
+              <span className="hero-flow-label">zero caos</span>
               <svg className="hand-drawn-circle" viewBox="0 0 260 60" preserveAspectRatio="none">
                 <path
                   className="sketch-path"

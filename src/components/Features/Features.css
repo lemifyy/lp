@@ -45,6 +45,47 @@
   color: var(--text-muted);
 }
 
+.features-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.btn-emphasis-hover {
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 8px 24px rgba(28, 64, 59, 0.15);
+}
+
+.btn-emphasis-svg {
+  position: absolute;
+  top: -16px;
+  right: -24px;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+  transform: scale(0.6) rotate(15deg);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.btn-emphasis-hover:hover .btn-emphasis-svg {
+  opacity: 1;
+  transform: scale(1) rotate(25deg);
+}
+
+.btn-emphasis-svg path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset 0.4s ease-out;
+}
+
+.btn-emphasis-hover:hover .btn-emphasis-svg path {
+  stroke-dashoffset: 0;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════════ */
@@ -94,5 +135,15 @@
 
   .feature-desc {
     font-size: 14px;
+  }
+
+  .features-cta {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .features-cta .btn {
+    width: 100%;
   }
 }

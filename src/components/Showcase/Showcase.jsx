@@ -10,6 +10,7 @@ function Showcase() {
     <section className="showcase" id="showcase">
       <div className="container">
         <div className="section-header">
+          <span className="section-badge">Agentes de IA</span>
           <h2 className="heading-lg">Seu novo colaborador</h2>
           <p className="text-lg">
             Aumente a produtividade da sua equipe com nosso agente especializado em cada parte do seu negócio.
