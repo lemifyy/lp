@@ -1,0 +1,174 @@
+.hero-flow-section {
+    background-color: #f2f5f5;
+    border: 1px solid #E5EBE8;
+    margin: 0px 15px;
+    margin-bottom: var(--section-space);
+    border-radius: 40px;
+    padding: 60px 1px 0px;
+    margin-top: calc(var(--header-h) + 40px);
+    overflow: visible;
+}
+
+.hero-flow-section .section-header {
+    max-width: 900px;
+    margin-bottom: 48px;
+}
+
+.hero-flow-section .heading-lg {
+    font-size: clamp(32px, 5vw, 62px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+/* ReactFlow */
+.hero-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-flow-badge-wrapper {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-flow-heading-badge {
+    position: relative;
+    padding: 10px 32px;
+    vertical-align: middle;
+    display: inline-flex;
+}
+
+.hero-flow-label {
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: 700;
+    color: var(--primary);
+    position: relative;
+    z-index: 10;
+}
+
+.hand-drawn-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 20px);
+    height: calc(100% + 15px);
+    pointer-events: none;
+    z-index: 5;
+    overflow: visible;
+}
+
+.sketch-path {
+    stroke: var(--primary);
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    transition: stroke-dashoffset 0s;
+    stroke-width: 3;
+}
+
+/* Animação quando scrollar */
+.hero-flow-heading-badge.animated .sketch-path {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.8s ease-out;
+}
+
+/* Efeito de tremor sutil para parecer mais desenhado à mão */
+@keyframes sketchWiggle {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-50%, -50%) rotate(0.3deg);
+    }
+
+    75% {
+        transform: translate(-50%, -50%) rotate(-0.3deg);
+    }
+}
+
+.hero-flow-heading-badge.animated .hand-drawn-circle {
+    animation: sketchWiggle 0.1s ease-in-out 1;
+}
+
+.xyflow-wrapper {
+    width: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.xyflow-canvas {
+    height: 720px;
+    width: 100%;
+    overflow: visible !important;
+}
+
+.xyflow-canvas .react-flow__node {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    box-shadow: 0 4px 16px rgba(28, 64, 59, 0.06);
+    overflow: visible;
+}
+
+/* Preview node - remove default styles */
+.xyflow-canvas .react-flow__node[data-id="preview"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+}
+
+.xyflow-canvas .react-flow__handle {
+    opacity: 0 !important;
+}
+
+.xyflow-canvas .react-flow__pane,
+.xyflow-canvas .react-flow__nodes,
+.xyflow-canvas .react-flow__edges {
+    pointer-events: none !important;
+}
+
+.hero-preview {
+    width: 100%;
+    border-radius: 30px;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-flow-section {
+        margin-top: calc(var(--header-h) + 20px);
+        padding: 40px 1px 0px;
+    }
+
+    .xyflow-canvas {
+        height: 380px;
+    }
+
+    .hero-flow-section .heading-lg {
+        font-size: clamp(26px, 8vw, 36px);
+        margin-bottom: 24px;
+    }
+}
+
+.badge-gradient {
+    background: linear-gradient(90deg, #d8fe6a, #e5f68a, #d8fe6a);
+    background-size: 200% auto;
+    color: var(--primary) !important;
+    border: none !important;
+    animation: badgeShine 3s linear infinite;
+    font-weight: 700;
+}
+
+@keyframes badgeShine {
+    to {
+        background-position: 200% center;
+    }
+}

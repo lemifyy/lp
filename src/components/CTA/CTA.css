@@ -1,85 +1,4 @@
 /* ═══════════════════════════════════════════════════════════════
-   SISTEMA DE BOTÕES - LEMIFY
-   Este arquivo centraliza todos os estilos de botões da LP.
-   Importe este arquivo para usar os botões em qualquer componente.
-   ═══════════════════════════════════════════════════════════════ */
-
-/* ═══════════════════════════════════════════════════════════════
-   BOTÃO BASE
-   ═══════════════════════════════════════════════════════════════ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 48px;
-  padding: 0 28px;
-  border-radius: 17px;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  transition: all 0.25s var(--ease-smooth);
-  white-space: nowrap;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   VARIANTES DE BOTÃO
-   ═══════════════════════════════════════════════════════════════ */
-
-/* Primary - Verde escuro */
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-}
-
-.btn-primary:hover {
-  background: var(--primary-light);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(28, 64, 59, 0.2);
-}
-
-/* Secondary - Verde lima */
-.btn-secondary {
-  background: var(--secondary);
-  color: var(--primary);
-}
-
-.btn-secondary:hover {
-  background: var(--secondary-light);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(209, 240, 99, 0.35);
-}
-
-/* Outline - Borda */
-.btn-outline {
-  background: transparent;
-  color: var(--primary);
-  border: 1.5px solid var(--border);
-}
-
-.btn-outline:hover {
-  border-color: var(--primary);
-  background: rgba(28, 64, 59, 0.03);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   TAMANHOS
-   ═══════════════════════════════════════════════════════════════ */
-.btn-sm {
-  height: 36px;
-  padding: 0 18px;
-  font-size: 13px;
-}
-
-.btn-lg {
-  height: 56px;
-  padding: 0 36px;
-  font-size: 16px;
-}
-
-/* ═══════════════════════════════════════════════════════════════
    SEÇÃO CTA COMPLETA
    ═══════════════════════════════════════════════════════════════ */
 .cta {
@@ -141,7 +60,7 @@
 }
 
 .cta-secondary .btn-secondary:hover {
-  background: #2a5a52;
+  background: var(--primary-light);
 }
 
 .cta-secondary .btn-outline {
@@ -175,7 +94,7 @@
 }
 
 .cta-outline .btn-secondary:hover {
-  background: #2a5a52;
+  background: var(--primary-light);
 }
 
 .cta-outline .btn-outline {
@@ -239,6 +158,7 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 .cta-card {
   border-radius: 48px;
   padding: 80px 60px;
@@ -256,7 +176,7 @@
   left: -30%;
   width: 60%;
   height: 200%;
-  background: radial-gradient(ellipse at center, rgba(209, 240, 99, 0.15) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center, rgba(216, 254, 106, 0.15) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -267,7 +187,7 @@
   right: -30%;
   width: 60%;
   height: 200%;
-  background: radial-gradient(ellipse at center, rgba(209, 240, 99, 0.1) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center, rgba(216, 254, 106, 0.1) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -309,10 +229,11 @@
     padding: 0 22px;
     font-size: 14px;
   }
-    .btn-lg {
-      height: 50px;
-      padding: 0 28px;
-    }
+
+  .btn-lg {
+    height: 50px;
+    padding: 0 28px;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -330,17 +251,17 @@
     padding: 48px 32px;
     border-radius: 12px;
   }
-  
+
   .cta-text {
     font-size: 16px;
     margin-bottom: 28px;
   }
-  
+
   .cta-actions {
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .cta-actions .btn {
     width: 100%;
     max-width: 280px;
@@ -352,11 +273,11 @@
     padding: 40px 24px;
     border-radius: 12px;
   }
-  
+
   .cta-title {
     margin-bottom: 16px;
   }
-  
+
   .cta-text {
     font-size: 15px;
     margin-bottom: 24px;

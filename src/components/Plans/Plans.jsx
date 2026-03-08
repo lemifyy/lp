@@ -117,7 +117,7 @@ function Plans() {
               return (
                 <div
                   key={plan.id}
-                  className={`plan-card ${isPopular ? 'plan-card--popular' : ''} ${isFree ? 'plan-card--free' : ''}`}
+                  className={`card plan-card ${isPopular ? 'plan-card--popular' : ''} ${isFree ? 'plan-card--free' : ''}`}
                 >
                   {isPopular && (
                     <div className="plan-badge">Mais popular</div>

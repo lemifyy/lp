@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ReactFlow, useNodesState, useEdgesState } from '@xyflow/react';
 import { FaInstagram, FaWhatsapp, FaFacebook, FaTiktok, FaTelegram } from 'react-icons/fa';
-import './Hero.css';
+import './HeroFlow.css';
 
 function HeroFlow() {
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const canvasRef = useRef(null);
   const flowRef = useRef(null);
 
@@ -13,13 +14,17 @@ function HeroFlow() {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
+
+    // Anima o laço logo após o mount já que agora está no topo
+    setTimeout(() => setIsMounted(true), 100);
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 100);
+      setIsScrolled(scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     handleScroll();
@@ -40,19 +45,21 @@ function HeroFlow() {
     borderRadius: '50%',
   });
 
+  const BRAND_PRIMARY = '#1C403B';
+
   const initialNodes = useMemo(() => [
-    { id: 'wa', position: { x: 0, y: 0 }, data: { label: <FaWhatsapp size={iconSize} color="#1C403B" /> }, style: getIconStyle('transparent', '#1C403B') },
-    { id: 'ig', position: { x: 0, y: 0 }, data: { label: <FaInstagram size={iconSize} color="#1C403B" /> }, style: getIconStyle('transparent', '#1C403B') },
-    { id: 'fb', position: { x: 0, y: 0 }, data: { label: <FaFacebook size={iconSize} color="#1C403B" /> }, style: getIconStyle('transparent', '#1C403B') },
-    { id: 'tg', position: { x: 0, y: 0 }, data: { label: <FaTelegram size={iconSize} color="#1C403B" /> }, style: getIconStyle('transparent', '#1C403B') },
-    { id: 'tiktok', position: { x: 0, y: 0 }, data: { label: <FaTiktok size={iconSize} color="#1C403B" /> }, style: getIconStyle('transparent', '#1C403B') },
+    { id: 'wa', position: { x: 0, y: 0 }, data: { label: <FaWhatsapp size={iconSize} color={BRAND_PRIMARY} /> }, style: getIconStyle('transparent', BRAND_PRIMARY) },
+    { id: 'ig', position: { x: 0, y: 0 }, data: { label: <FaInstagram size={iconSize} color={BRAND_PRIMARY} /> }, style: getIconStyle('transparent', BRAND_PRIMARY) },
+    { id: 'fb', position: { x: 0, y: 0 }, data: { label: <FaFacebook size={iconSize} color={BRAND_PRIMARY} /> }, style: getIconStyle('transparent', BRAND_PRIMARY) },
+    { id: 'tg', position: { x: 0, y: 0 }, data: { label: <FaTelegram size={iconSize} color={BRAND_PRIMARY} /> }, style: getIconStyle('transparent', BRAND_PRIMARY) },
+    { id: 'tiktok', position: { x: 0, y: 0 }, data: { label: <FaTiktok size={iconSize} color={BRAND_PRIMARY} /> }, style: getIconStyle('transparent', BRAND_PRIMARY) },
     {
       id: 'preview',
       position: { x: 0, y: 0 },
-      style: { 
+      style: {
         background: 'transparent',
-        border: 'none', 
-        padding: 0, 
+        border: 'none',
+        padding: 0,
         boxShadow: 'none',
         borderRadius: 0
       },
@@ -61,12 +68,12 @@ function HeroFlow() {
   ], [nodeSize, iconSize, isMobile]);
 
   const initialEdges = useMemo(() => [
-    { id: 'e1', source: 'wa', target: 'preview', animated: true, style: { stroke: '#1C403B', strokeDasharray: '8 6', strokeWidth: 2 } },
-    { id: 'e2', source: 'ig', target: 'preview', animated: true, style: { stroke: '#1C403B', strokeDasharray: '8 6', strokeWidth: 2 } },
-    { id: 'e3', source: 'fb', target: 'preview', animated: true, style: { stroke: '#1C403B', strokeDasharray: '8 6', strokeWidth: 2 } },
-    { id: 'e4', source: 'tg', target: 'preview', animated: true, style: { stroke: '#1C403B', strokeDasharray: '8 6', strokeWidth: 2 } },
-    { id: 'e5', source: 'tiktok', target: 'preview', animated: true, style: { stroke: '#1C403B', strokeDasharray: '8 6', strokeWidth: 2 } },
-  ], []);
+    { id: 'e1', source: 'wa', target: 'preview', animated: true, style: { stroke: BRAND_PRIMARY, strokeDasharray: '8 6', strokeWidth: 2 } },
+    { id: 'e2', source: 'ig', target: 'preview', animated: true, style: { stroke: BRAND_PRIMARY, strokeDasharray: '8 6', strokeWidth: 2 } },
+    { id: 'e3', source: 'fb', target: 'preview', animated: true, style: { stroke: BRAND_PRIMARY, strokeDasharray: '8 6', strokeWidth: 2 } },
+    { id: 'e4', source: 'tg', target: 'preview', animated: true, style: { stroke: BRAND_PRIMARY, strokeDasharray: '8 6', strokeWidth: 2 } },
+    { id: 'e5', source: 'tiktok', target: 'preview', animated: true, style: { stroke: BRAND_PRIMARY, strokeDasharray: '8 6', strokeWidth: 2 } },
+  ], [BRAND_PRIMARY]);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
@@ -74,7 +81,7 @@ function HeroFlow() {
   const recenterNodes = useCallback(() => {
     const el = canvasRef.current;
     if (!el) return;
-    
+
     const width = el.clientWidth;
     const height = el.clientHeight;
     if (!width || !height) return;
@@ -115,10 +122,9 @@ function HeroFlow() {
     <section className="hero-flow-section section">
       <div className="container">
         <div className="section-header">
-          <h2 className="heading-lg">
-            Todos os seus canais em uma única caixa de entrada.<br /> 
-            <span className={`hero-flow-heading-badge ${isScrolled ? 'animated' : ''}`}>
-              <span className="hero-flow-label">zero caos</span>
+          <div className="hero-flow-badge-wrapper">
+            <span className={`hero-flow-heading-badge ${isScrolled || isMounted ? 'animated' : ''}`}>
+              <span className="hero-flow-label">sem caos</span>
               <svg className="hand-drawn-circle" viewBox="0 0 260 60" preserveAspectRatio="none">
                 <path
                   className="sketch-path"
@@ -136,11 +142,13 @@ function HeroFlow() {
                 />
               </svg>
             </span>
+          </div>
+
+          <h2 className="heading-lg">
+            Seus canais de atendimento<br />em um só lugar
           </h2>
           <p className="text-lg">
-            Chega de abas abertas, mensagens perdidas e clientes esperando. <br />
-            O Lemify organiza tudo para você!
-          </p>
+            Centralize WhatsApp, Instagram e outros canais no Lemify. O agente de IA, vai atender seus clientes, organizar o funil de vendas e agendar serviços automaticamente!</p>
         </div>
       </div>
       <div className="xyflow-wrapper">
@@ -166,7 +174,7 @@ function HeroFlow() {
         </div>
       </div>
     </section>
-    );
-  }
+  );
+}
 
 export default HeroFlow;

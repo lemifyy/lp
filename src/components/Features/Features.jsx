@@ -1,35 +1,44 @@
-import React from 'react';
-import { HiOutlineChatBubbleLeftRight, HiOutlineCpuChip, HiOutlineChartBar, HiOutlineUsers, HiOutlineBolt, HiOutlineShieldCheck } from 'react-icons/hi2';
+import {
+  HiOutlineChatBubbleLeftRight,
+  HiOutlineChartBar,
+  HiOutlineUsers,
+  HiOutlineBolt,
+  HiOutlineShieldCheck
+} from 'react-icons/hi2';
+import { RiGeminiLine } from 'react-icons/ri';
 import './Features.css';
+
+const BRAND_PRIMARY = '#1C403B';
 
 const features = [
   {
-    icon: <HiOutlineChatBubbleLeftRight size={28} color="#1C403B" />,
+    icon: <RiGeminiLine size={28} color={BRAND_PRIMARY} />,
+    title: 'Agentes de IA',
+    desc: 'Configure seu agente de IA para atender seus clientes, organizar seu funil de vendas e agendar serviços automaticamente.'
+  },
+  {
+    icon: <HiOutlineChatBubbleLeftRight size={28} color={BRAND_PRIMARY} />,
     title: 'Atendimento unificado',
     desc: 'Centralize WhatsApp, Instagram, Facebook Messenger e mais em uma única caixa de entrada com histórico completo de cada cliente.'
   },
+
   {
-    icon: <HiOutlineCpuChip size={28} color="#1C403B" />,
-    title: 'Automação inteligente',
-    desc: 'Crie chatbots, respostas automáticas e fluxos de atendimento que funcionam 24/7, sem perder o toque humano.'
-  },
-  {
-    icon: <HiOutlineChartBar size={28} color="#1C403B" />,
+    icon: <HiOutlineChartBar size={28} color={BRAND_PRIMARY} />,
     title: 'Métricas e insights',
     desc: 'Acompanhe tempo de resposta, satisfação do cliente e produtividade do time em dashboards em tempo real.'
   },
   {
-    icon: <HiOutlineUsers size={28} color="#1C403B" />,
+    icon: <HiOutlineUsers size={28} color={BRAND_PRIMARY} />,
     title: 'Gestão de equipe',
     desc: 'Distribua tickets automaticamente, defina filas de atendimento e monitore o desempenho de cada colaborador.'
   },
   {
-    icon: <HiOutlineBolt size={28} color="#1C403B" />,
+    icon: <HiOutlineBolt size={28} color={BRAND_PRIMARY} />,
     title: 'CRM integrado',
     desc: 'Organize leads em funis visuais, registre notas e tarefas, e acompanhe cada oportunidade do primeiro contato à venda.'
   },
   {
-    icon: <HiOutlineShieldCheck size={28} color="#1C403B" />,
+    icon: <HiOutlineShieldCheck size={28} color={BRAND_PRIMARY} />,
     title: 'Segurança e LGPD',
     desc: 'Seus dados protegidos com criptografia, backup automático e total conformidade com a Lei Geral de Proteção de Dados.'
   }
@@ -45,10 +54,10 @@ function Features() {
             Funcionalidades pensadas para escala, controle e performance.
           </p>
         </div>
-        
+
         <div className="features-grid">
           {features.map((feature, idx) => (
-            <div key={idx} className="feature-card">
+            <div key={idx} className="card feature-card">
               <div className="feature-icon">
                 {feature.icon}
               </div>

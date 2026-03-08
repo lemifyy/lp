@@ -3,17 +3,17 @@ import '@xyflow/react/dist/style.css'
 import React, { useEffect, useState } from 'react'
 
 import Header from './components/Header/Header.jsx'
-import Hero from './components/Hero/Hero.jsx'
 import HeroFlow from './components/Hero/HeroFlow.jsx'
 import Features from './components/Features/Features.jsx'
 import Showcase from './components/Showcase/Showcase.jsx'
-import Plans from './components/Plans/Plans.jsx'
-import FAQ from './components/FAQ/FAQ.jsx'
-import CTA from './components/CTA/CTA.jsx'
 import Footer from './components/Footer/Footer.jsx'
+import Terms from './components/Terms/Terms.jsx'
+import Privacy from './components/Terms/Privacy.jsx'
+import LGPD from './components/Terms/LGPD.jsx'
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const path = window.location.pathname;
 
   useEffect(() => {
     const THRESH_ON = 50;
@@ -32,27 +32,35 @@ function App() {
       if ('scrollRestoration' in window.history) {
         window.history.scrollRestoration = 'manual';
       }
-    } catch {}
+    } catch { }
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     return () => {
       try {
         if ('scrollRestoration' in window.history) {
           window.history.scrollRestoration = 'auto';
         }
-      } catch {}
+      } catch { }
     };
   }, []);
+
+  if (path === '/termos') {
+    return <Terms />;
+  }
+
+  if (path === '/privacidade') {
+    return <Privacy />;
+  }
+
+  if (path === '/lgpd') {
+    return <LGPD />;
+  }
 
   return (
     <div className="lp">
       <Header scrolled={scrolled} />
-      <Hero />
       <HeroFlow />
       <Features />
       <Showcase />
-      <Plans />
-      <FAQ />
-      <CTA />
       <Footer />
     </div>
   )

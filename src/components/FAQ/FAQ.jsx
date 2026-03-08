@@ -33,6 +33,9 @@ function FAQ() {
     setOpenIndex(prev => (prev === idx ? -1 : idx));
   };
 
+  const BRAND_PRIMARY = '#1C403B';
+  const BRAND_SECONDARY = '#d8fe6a';
+
   return (
     <section className="faq section" id="faq">
       <div className="container">
@@ -45,19 +48,19 @@ function FAQ() {
 
             <div className="faq-image">
               <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="80" fill="#d1f063" opacity="0.2" />
-                <circle cx="100" cy="80" r="35" fill="#1C403B" />
-                <path d="M 100 115 Q 85 125, 70 115" stroke="#1C403B" strokeWidth="3" fill="none" strokeLinecap="round" />
-                <path d="M 100 115 Q 115 125, 130 115" stroke="#1C403B" strokeWidth="3" fill="none" strokeLinecap="round" />
+                <circle cx="100" cy="100" r="80" fill={BRAND_SECONDARY} opacity="0.2" />
+                <circle cx="100" cy="80" r="35" fill={BRAND_PRIMARY} />
+                <path d="M 100 115 Q 85 125, 70 115" stroke={BRAND_PRIMARY} strokeWidth="3" fill="none" strokeLinecap="round" />
+                <path d="M 100 115 Q 115 125, 130 115" stroke={BRAND_PRIMARY} strokeWidth="3" fill="none" strokeLinecap="round" />
                 <circle cx="90" cy="75" r="4" fill="#fff" />
                 <circle cx="110" cy="75" r="4" fill="#fff" />
-                <path d="M 60 140 Q 100 160, 140 140" stroke="#d1f063" strokeWidth="4" fill="none" strokeLinecap="round" />
-                <circle cx="50" cy="60" r="8" fill="#d1f063" opacity="0.6" />
-                <text x="48" y="65" fontSize="12" fill="#1C403B" fontWeight="bold">?</text>
-                <circle cx="150" cy="50" r="8" fill="#d1f063" opacity="0.6" />
-                <text x="148" y="55" fontSize="12" fill="#1C403B" fontWeight="bold">?</text>
-                <circle cx="160" cy="120" r="8" fill="#d1f063" opacity="0.6" />
-                <text x="158" y="125" fontSize="12" fill="#1C403B" fontWeight="bold">?</text>
+                <path d="M 60 140 Q 100 160, 140 140" stroke={BRAND_SECONDARY} strokeWidth="4" fill="none" strokeLinecap="round" />
+                <circle cx="50" cy="60" r="8" fill={BRAND_SECONDARY} opacity="0.6" />
+                <text x="48" y="65" fontSize="12" fill={BRAND_PRIMARY} fontWeight="bold">?</text>
+                <circle cx="150" cy="50" r="8" fill={BRAND_SECONDARY} opacity="0.6" />
+                <text x="148" y="55" fontSize="12" fill={BRAND_PRIMARY} fontWeight="bold">?</text>
+                <circle cx="160" cy="120" r="8" fill={BRAND_SECONDARY} opacity="0.6" />
+                <text x="158" y="125" fontSize="12" fill={BRAND_PRIMARY} fontWeight="bold">?</text>
               </svg>
             </div>
           </div>

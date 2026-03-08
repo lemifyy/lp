@@ -37,6 +37,7 @@
         transform: translateY(-10px);
     }
 }
+
 .faq-contact {
     margin-top: 32px;
     padding: 24px;
@@ -74,6 +75,7 @@
 .faq-whatsapp-btn svg {
     color: var(--secondary);
 }
+
 /* FAQ List */
 .faq-list {
     display: flex;
@@ -95,7 +97,7 @@
 
 .faq-item.open {
     border-color: var(--secondary);
-    box-shadow: 0 8px 24px rgba(209, 240, 99, 0.15);
+    box-shadow: 0 8px 24px rgba(216, 254, 106, 0.15);
 }
 
 .faq-btn {
@@ -180,7 +182,8 @@
     .faq-content {
         padding: 0 20px 16px;
     }
-  .faq-question {
-      font-size: 15px;
-  }
-  }
+
+    .faq-question {
+        font-size: 15px;
+    }
+}

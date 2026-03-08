@@ -9,8 +9,8 @@ import './CTA.css';
  */
 function CTA({
   variant = 'primary',
-  title = 'Pronto para transformar seu atendimento?',
-  description = 'Comece agora com 7 dias grátis. Sem cartão de crédito, sem compromisso. Seu time vai agradecer.',
+  title = 'Pronto para contratar seu novo colaborador mais eficiente?',
+  description = 'Ative seu Agente de IA hoje e transforme conversas passivas em vendas ativas. Teste 7 dias grátis.',
   primaryButtonText = 'Testar 7 dias grátis',
   primaryButtonUrl = 'https://app.lemify.com.br/signup',
   secondaryButtonText = 'Falar com time de vendas',
@@ -49,8 +49,8 @@ function CTA({
         <div className={`cta-card-wrapper ${isVisible ? 'layers-converged' : ''}`}>
           <div className="cta-card">
             <div className="cta-content">
-              <h2 className="cta-title">Comece hoje. Veja resultados amanhã.</h2>
-              <p className="cta-text">7 dias grátis para testar tudo. Sem burocracia, sem cartão. Cancele quando quiser.</p>
+              <h2 className="cta-title">{title}</h2>
+              <p className="cta-text">{description}</p>
               <div className="cta-actions">
                 <a
                   href={primaryButtonUrl}

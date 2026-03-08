@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import logo from '../../assets/logo.svg';
 import './Footer.css';
 
 function Footer() {
@@ -9,7 +10,9 @@ function Footer() {
         <div className="footer-grid">
           {/* Brand */}
           <div className="footer-brand">
-            <div className="footer-logo">Lemify</div>
+            <div className="footer-logo">
+              <img src={logo} alt="Lemify" style={{ height: '32px' }} />
+            </div>
             <p className="footer-tagline">
               Plataforma de atendimento unificado. Conecte todos os seus canais,
               automatize processos e encante seus clientes.
@@ -31,8 +34,7 @@ function Footer() {
           <div className="footer-links">
             <div className="footer-links-title">Produto</div>
             <a href="#features">Recursos</a>
-            <a href="#plans">Planos e preços</a>
-            <a href="#faq">FAQ</a>
+            <a href="#showcase">Showcase</a>
             <a href="https://app.pepchat.com.br/signup">Criar conta</a>
           </div>
 
@@ -41,7 +43,6 @@ function Footer() {
             <div className="footer-links-title">Empresa</div>
             <a href="#">Sobre nós</a>
             <a href="#">Blog</a>
-            <a href="#">Carreiras</a>
             <a href="mailto:contato@lemify.com.br">Contato</a>
           </div>
 
@@ -51,18 +52,17 @@ function Footer() {
             <a href="#">Central de ajuda</a>
             <a href="https://wa.me/5511957839501" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
             <a href="mailto:suporte@lemify.com.br">Email de suporte</a>
-            <a href="#">Status do sistema</a>
           </div>
         </div>
 
         <div className="footer-bottom">
           <div className="footer-copyright">
-            © 2025 Lemify. Todos os direitos reservados.
+            © 2025-{new Date().getFullYear()} Lemify Digital LTDA. Todos os direitos reservados.
           </div>
           <div className="footer-legal">
-            <a href="#">Termos de uso</a>
-            <a href="#">Política de privacidade</a>
-            <a href="#">LGPD</a>
+            <a href="/termos">Termos de uso</a>
+            <a href="/privacidade">Política de privacidade</a>
+            <a href="/lgpd">LGPD</a>
           </div>
         </div>
       </div>

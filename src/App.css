@@ -3,24 +3,24 @@
 
 :root {
   --primary: #1C403B;
-    --primary-light: #265650;
-    --primary-dark: #142e2a;
-    --secondary: #d1f063;
-    --secondary-light: #e0f590;
-    --secondary-dark: #b8d44f;
-  --bg: #FAFBFA;
-    --bg-alt: #F2F5F3;
-    --bg-dark: #1C403B;
+  --primary-light: #265650;
+  --primary-dark: #142e2a;
+  --secondary: #d8fe6a;
+  --secondary-light: #e5f68a;
+  --secondary-dark: #a9cc4e;
+  --bg: #fff;
+  --bg-alt: #e5f68a;
+  --bg-dark: #1C403B;
   --text: #1C403B;
-    --text-muted: #5A6B66;
-    --text-light: #fff;
+  --text-muted: #666666;
+  --text-light: #fff;
   --border: #E5EBE8;
-    --border-light: rgba(255, 255, 255, 0.2);
+  --border-light: rgba(255, 255, 255, 0.2);
   --header-h: 72px;
-    --container-max: 1400px;
-    --section-space: 60px;
+  --container-max: 1400px;
+  --section-space: 60px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *,
@@ -98,13 +98,89 @@ body {
   color: var(--text-muted);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   SISTEMA DE BOTÕES - GLOBAL
+   ═══════════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 32px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s var(--ease-smooth);
+  white-space: nowrap;
+  font-family: var(--font-family);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(28, 64, 59, 0.2);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(216, 254, 106, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1.5px solid var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary);
+  background: rgba(28, 64, 59, 0.03);
+  transform: translateY(-1px);
+}
+
+.btn-sm {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.btn-lg {
+  height: 60px;
+  padding: 0 40px;
+  font-size: 17px;
+  border-radius: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BADGES - GLOBAL
+   ═══════════════════════════════════════════════════════════════ */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 16px;
-  background: rgba(209, 240, 99, 0.15);
-  border: 1px solid rgba(209, 240, 99, 0.4);
+  padding: 6px 16px;
+  background: rgba(229, 246, 138, 0.12);
+  border: 1px solid rgba(229, 246, 138, 0.3);
   border-radius: 100px;
   font-size: 13px;
   font-weight: 600;
@@ -113,21 +189,27 @@ body {
 }
 
 .badge--light {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   CARDS - GLOBAL
+   ═══════════════════════════════════════════════════════════════ */
 .card {
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
+  border-radius: 24px;
+  padding: 40px;
   transition: all 0.3s var(--ease-smooth);
+  position: relative;
 }
 
 .card:hover {
-  border-color: transparent;
-  box-shadow: 0 12px 40px rgba(28, 64, 59, 0.08);
+  border-color: var(--secondary);
+  box-shadow: 0 20px 48px rgba(28, 64, 59, 0.08);
+  transform: translateY(-4px);
 }
 
 .card-dark {
@@ -141,6 +223,7 @@ body {
   border-color: transparent;
   color: var(--primary);
 }
+
 .section {
   padding: var(--section-space) 0;
 }
@@ -163,7 +246,7 @@ body {
 @media (max-width: 768px) {
   :root {
     --section-space: 64px;
-  
-}
+
+  }
 
 }

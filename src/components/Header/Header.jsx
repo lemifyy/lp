@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import logo from '../../assets/logo.svg';
 import './Header.css';
 
 function Header({ scrolled }) {
   const [activeSection, setActiveSection] = useState('');
+  const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0, opacity: 0 });
+  const navRef = useRef(null);
+  const linksRef = useRef({});
 
   useEffect(() => {
-    const sections = ['features', 'plans', 'contato'];
+    const sections = ['features', 'showcase'];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 10;
@@ -21,17 +25,42 @@ function Header({ scrolled }) {
         }
       }
 
-      // Se não está em nenhuma seção, limpa o active
       if (window.scrollY < 300) {
         setActiveSection('');
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Verifica posição inicial
-
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Atualiza o slider quando a seção ativa muda
+  useEffect(() => {
+    updateSlider(activeSection || 'inicio');
+  }, [activeSection]);
+
+  const updateSlider = (id) => {
+    const link = linksRef.current[id];
+    if (link && navRef.current) {
+      const { offsetLeft, offsetWidth } = link;
+      setSliderStyle({
+        left: offsetLeft,
+        width: offsetWidth,
+        opacity: 1
+      });
+    } else {
+      setSliderStyle(prev => ({ ...prev, opacity: 0 }));
+    }
+  };
+
+  const handleMouseEnter = (id) => {
+    updateSlider(id);
+  };
+
+  const handleMouseLeave = () => {
+    updateSlider(activeSection || 'inicio');
+  };
 
   const handleClick = (e, sectionId) => {
     setActiveSection(sectionId);
@@ -41,37 +70,48 @@ function Header({ scrolled }) {
     <header className={`header${scrolled ? ' scrolled' : ''}`}>
       <div className="header-inner">
         <a href="/" className="header-brand">
-          <img src="/logo.png" alt="Lemify" className="header-logo" />
+          <img src={logo} alt="Lemify" className="header-logo" />
         </a>
 
-        <nav className="header-nav">
+        <nav className="header-nav" ref={navRef} onMouseLeave={handleMouseLeave}>
+          <div
+            className="nav-slider"
+            style={{
+              transform: `translateX(${sliderStyle.left}px)`,
+              width: `${sliderStyle.width}px`,
+              opacity: sliderStyle.opacity
+            }}
+          />
           <a
             href="#"
+            ref={el => linksRef.current['inicio'] = el}
             className={activeSection === '' ? 'active' : ''}
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setActiveSection(''); }}
+            onMouseEnter={() => handleMouseEnter('inicio')}
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setActiveSection('');
+            }}
           >
             Início
           </a>
           <a
             href="#features"
+            ref={el => linksRef.current['features'] = el}
             className={activeSection === 'features' ? 'active' : ''}
+            onMouseEnter={() => handleMouseEnter('features')}
             onClick={(e) => handleClick(e, 'features')}
           >
             Recursos
           </a>
           <a
-            href="#plans"
-            className={activeSection === 'plans' ? 'active' : ''}
-            onClick={(e) => handleClick(e, 'plans')}
+            href="#showcase"
+            ref={el => linksRef.current['showcase'] = el}
+            className={activeSection === 'showcase' ? 'active' : ''}
+            onMouseEnter={() => handleMouseEnter('showcase')}
+            onClick={(e) => handleClick(e, 'showcase')}
           >
-            Planos
-          </a>
-          <a
-            href="#contato"
-            className={activeSection === 'contato' ? 'active' : ''}
-            onClick={(e) => handleClick(e, 'contato')}
-          >
-            Contato
+            Agentes
           </a>
         </nav>
 
