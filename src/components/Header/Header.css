@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 0;
+  padding: 12px 0 0;
   transition: all 0.3s var(--ease-smooth);
 }
 
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 80px;
   padding: 0 32px;
   max-width: var(--container-max);
   margin: 0 auto;
@@ -41,7 +41,7 @@
 }
 
 .header-logo {
-  height: 32px;
+  height: 40px;
   width: auto;
   transition: transform 0.3s var(--ease-smooth);
 }
@@ -234,6 +234,10 @@
 
   .header-brand {
     font-size: 20px;
+  }
+
+  .header-logo {
+    height: 32px;
   }
 }
 

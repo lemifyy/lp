@@ -8,6 +8,7 @@ import Features from './components/Features/Features.jsx'
 import Showcase from './components/Showcase/Showcase.jsx'
 import Integrations from './components/Integrations/Integrations.jsx'
 import Footer from './components/Footer/Footer.jsx'
+import ScrollToTop from './components/Common/ScrollToTop.jsx'
 import Terms from './components/Terms/Terms.jsx'
 import Privacy from './components/Terms/Privacy.jsx'
 import LGPD from './components/Terms/LGPD.jsx'
@@ -21,7 +22,7 @@ function App() {
     const THRESH_OFF = 10;
     const onScroll = () => {
       const y = window.scrollY || window.pageYOffset || 0;
-      setScrolled(prev => (y > THRESH_ON ? true : y < THRESH_OFF ? false : prev));
+      setScrolled(y > THRESH_ON);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -64,6 +65,7 @@ function App() {
       <Showcase />
       <Integrations />
       <Footer />
+      <ScrollToTop />
     </div>
   )
 }

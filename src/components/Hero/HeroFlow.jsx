@@ -145,10 +145,10 @@ function HeroFlow() {
           </div>
 
           <h2 className="heading-lg">
-            Seus canais de atendimento<br />em um só lugar
+            Seus canais de atendimento em um só lugar
           </h2>
           <p className="text-lg">
-            Centralize WhatsApp, Instagram e outros canais no Lemify. O agente de IA, vai atender seus clientes, organizar o funil de vendas e agendar serviços automaticamente!</p>
+            Centralize WhatsApp, Instagram e outros canais no Lemify. O Lemi, seu agente de IA, vai atender clientes, organizar o funil de vendas e agendar serviços automaticamente!</p>
         </div>
       </div>
       <div className="xyflow-wrapper">

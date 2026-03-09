@@ -273,7 +273,7 @@
   left: 0;
   right: 0;
   background: #fff;
-  border-radius: 18px;
+  border-radius: 12px;
   padding: 10px;
   box-shadow: 0 16px 48px rgba(28, 64, 59, 0.18);
   z-index: 10;
@@ -358,7 +358,6 @@
 
   .plan-card {
     padding: 24px 18px;
-    border-radius: 22px;
   }
 
   .plan-card--popular {

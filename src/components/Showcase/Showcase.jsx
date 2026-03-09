@@ -3,6 +3,7 @@ import agendaImg from '../../assets/agenda.png';
 import crmImg from '../../assets/crm.png';
 import lemiImg from '../../assets/lemi.png';
 import resumoImg from '../../assets/resumo.png';
+import ScrollEmphasis from '../Common/ScrollEmphasis';
 import './Showcase.css';
 
 function Showcase() {
@@ -10,10 +11,10 @@ function Showcase() {
     <section className="showcase" id="showcase">
       <div className="container">
         <div className="section-header">
-          <span className="section-badge">Agentes de IA</span>
-          <h2 className="heading-lg">Seu novo colaborador</h2>
+          <span className="section-badge">Agente de IA</span>
+          <h2 className="heading-lg">Seu novo colaborador <ScrollEmphasis /></h2>
           <p className="text-lg">
-            Aumente a produtividade da sua equipe com nosso agente especializado em cada parte do seu negócio.
+            Aumente a produtividade da sua equipe com o Lemi, nosso agente especializado em cada parte do seu negócio.
           </p>
         </div>
 
@@ -24,7 +25,7 @@ function Showcase() {
               <span className="showcase-badge badge-conversational">Conversacional</span>
               <h3 className="showcase-title">Lemi</h3>
               <div className="showcase-image" style={{ marginTop: '10px', marginBottom: '10px' }}>
-                <img src={lemiImg} alt="Agente Lemi" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
+                <img src={lemiImg} alt="Agente Lemi" />
               </div>
               <p className="showcase-desc">
                 Dê personalidade ao seu negócio. Configure tom de voz, estilo de escrita e comportamento para um atendimento único e humanizado.
@@ -35,10 +36,10 @@ function Showcase() {
           {/* Agenda - Agenda */}
           <div className="card showcase-card showcase-card--agenda">
             <div className="showcase-content">
-              <span className="showcase-badge badge-scheduler">Agendador</span>
+              <span className="showcase-badge badge-scheduler">Agenda</span>
               <h3 className="showcase-title">Smart Booking</h3>
               <div className="showcase-image" style={{ marginTop: '10px', marginBottom: '10px' }}>
-                <img src={agendaImg} alt="Agendamento inteligente" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
+                <img src={agendaImg} alt="Agendamento inteligente" />
               </div>
               <p className="showcase-desc">
                 Organize sua agenda sem esforço. Nosso agente identifica horários livres e marca compromissos automaticamente durante a conversa.
@@ -52,7 +53,7 @@ function Showcase() {
               <span className="showcase-badge badge-summary">Resumo</span>
               <h3 className="showcase-title">Insights Rápidos</h3>
               <div className="showcase-image" style={{ marginTop: '10px', marginBottom: '10px' }}>
-                <img src={resumoImg} alt="Resumos Inteligentes" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
+                <img src={resumoImg} alt="Resumos Inteligentes" />
               </div>
               <p className="showcase-desc">
                 Não perca tempo lendo históricos longos. Receba um resumo inteligente com os pontos principais de cada interação finalizada.
@@ -66,7 +67,7 @@ function Showcase() {
               <span className="showcase-badge badge-crm">CRM</span>
               <h3 className="showcase-title">Pipeline Ativo</h3>
               <div className="showcase-image" style={{ marginTop: '10px', marginBottom: '10px' }}>
-                <img src={crmImg} alt="CRM Inteligente" style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
+                <img src={crmImg} alt="CRM Inteligente" />
               </div>
               <p className="showcase-desc">
                 Gestão comercial autônoma. Seus leads são qualificados e movidos pelo funil de vendas sem que você precise apertar um botão.

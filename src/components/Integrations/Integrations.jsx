@@ -25,11 +25,14 @@ function Integrations() {
     const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
 
     return (
-        <section className="integrations">
+        <section className="integrations" id="integrations">
             <div className="container">
                 <div className="section-header">
                     <span className="section-badge">Ecossistema</span>
-                    <h2 className="heading-md">Integre com as ferramentas que você já usa</h2>
+                    <h2 className="heading-lg">Integrações</h2>
+                    <p className="text-lg">
+                        Conecte suas plataformas favoritas para alimentar seu agente com dados reais, permitindo um atendimento cada vez mais especializado e eficiente.
+                    </p>
                 </div>
             </div>
 
@@ -40,6 +43,14 @@ function Integrations() {
                             <img src={logo.src} alt={logo.name} title={logo.name} />
                         </div>
                     ))}
+                </div>
+            </div>
+
+            <div className="container">
+                <div className="integrations-cta">
+                    <a href="https://app.lemify.com.br/signup" className="btn btn-primary btn-lg">
+                        Experimente por 30 dias
+                    </a>
                 </div>
             </div>
         </section>

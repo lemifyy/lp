@@ -34,7 +34,7 @@ function Footer() {
           <div className="footer-links">
             <div className="footer-links-title">Produto</div>
             <a href="#features">Recursos</a>
-            <a href="#showcase">Showcase</a>
+            <a href="#showcase">Agentes de IA</a>
             <a href="https://app.pepchat.com.br/signup">Criar conta</a>
           </div>
 

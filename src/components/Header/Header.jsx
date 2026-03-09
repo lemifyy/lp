@@ -10,7 +10,7 @@ function Header({ scrolled }) {
   const linksRef = useRef({});
 
   useEffect(() => {
-    const sections = ['features', 'showcase'];
+    const sections = ['features', 'showcase', 'integrations'];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 10;
@@ -64,6 +64,20 @@ function Header({ scrolled }) {
   };
 
   const handleClick = (e, sectionId) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Correspondente ao scroll-margin-top
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
     setActiveSection(sectionId);
     setIsMobileMenuOpen(false);
   };
@@ -117,7 +131,16 @@ function Header({ scrolled }) {
             onMouseEnter={() => handleMouseEnter('showcase')}
             onClick={(e) => handleClick(e, 'showcase')}
           >
-            Agentes
+            Agentes de IA
+          </a>
+          <a
+            href="#integrations"
+            ref={el => linksRef.current['integrations'] = el}
+            className={activeSection === 'integrations' ? 'active' : ''}
+            onMouseEnter={() => handleMouseEnter('integrations')}
+            onClick={(e) => handleClick(e, 'integrations')}
+          >
+            Integrações
           </a>
         </nav>
 
@@ -145,7 +168,8 @@ function Header({ scrolled }) {
             setIsMobileMenuOpen(false);
           }}>Início</a>
           <a href="#features" className={activeSection === 'features' ? 'active' : ''} onClick={(e) => handleClick(e, 'features')}>Recursos</a>
-          <a href="#showcase" className={activeSection === 'showcase' ? 'active' : ''} onClick={(e) => handleClick(e, 'showcase')}>Agentes</a>
+          <a href="#showcase" className={activeSection === 'showcase' ? 'active' : ''} onClick={(e) => handleClick(e, 'showcase')}>Agentes de IA</a>
+          <a href="#integrations" className={activeSection === 'integrations' ? 'active' : ''} onClick={(e) => handleClick(e, 'integrations')}>Integrações</a>
         </nav>
         <div className="mobile-actions">
           <a className="btn btn-outline" href="https://app.lemify.com.br/login">Entrar</a>

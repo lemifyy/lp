@@ -144,21 +144,25 @@
 /* Responsive */
 @media (max-width: 768px) {
     .hero-flow-section {
-        margin-top: calc(var(--header-h) + 20px);
-        padding: 40px 1px 0px;
+        margin-top: calc(var(--header-h) + 16px);
+        padding: 32px 1px 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 24px;
     }
 
     .xyflow-canvas {
-        height: 380px;
+        height: 340px;
     }
 
     .hero-flow-section .heading-lg {
-        font-size: clamp(26px, 8vw, 36px);
-        margin-bottom: 24px;
+        font-size: clamp(30px, 9vw, 44px);
+        line-height: 1.2;
+        margin-bottom: 20px;
     }
 
     .xyflow-wrapper {
-        padding: 0 10px;
+        padding: 0 12px;
     }
 }
 
