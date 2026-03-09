@@ -6,6 +6,7 @@ import Header from './components/Header/Header.jsx'
 import HeroFlow from './components/Hero/HeroFlow.jsx'
 import Features from './components/Features/Features.jsx'
 import Showcase from './components/Showcase/Showcase.jsx'
+import Integrations from './components/Integrations/Integrations.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import Terms from './components/Terms/Terms.jsx'
 import Privacy from './components/Terms/Privacy.jsx'
@@ -61,6 +62,7 @@ function App() {
       <HeroFlow />
       <Features />
       <Showcase />
+      <Integrations />
       <Footer />
     </div>
   )

@@ -86,7 +86,7 @@ function HeroFlow() {
     const height = el.clientHeight;
     if (!width || !height) return;
 
-    const margin = isMobile ? 20 : 40; // margem em cada lado
+    const margin = isMobile ? 5 : 40; // margem em cada lado
     const imageWidth = width - (margin * 2);
     const centerX = width / 2;
     const spacing = isMobile ? 75 : 100;

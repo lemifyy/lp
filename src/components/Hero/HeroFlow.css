@@ -156,6 +156,10 @@
         font-size: clamp(26px, 8vw, 36px);
         margin-bottom: 24px;
     }
+
+    .xyflow-wrapper {
+        padding: 0 10px;
+    }
 }
 
 .badge-gradient {
