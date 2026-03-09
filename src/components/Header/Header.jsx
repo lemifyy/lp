@@ -6,6 +6,9 @@ function Header({ scrolled }) {
   const [activeSection, setActiveSection] = useState('');
   const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0, opacity: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const isManualScroll = useRef(false);
+  const scrollTimeout = useRef(null);
   const navRef = useRef(null);
   const linksRef = useRef({});
 
@@ -13,7 +16,22 @@ function Header({ scrolled }) {
     const sections = ['features', 'showcase', 'integrations'];
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 10;
+      // Se fo um scroll disparado por clique, ignoramos o scroll-spy temporariamente
+      if (isManualScroll.current) return;
+
+      if (window.scrollY < 100) {
+        setActiveSection('');
+        return;
+      }
+
+      // Verificação para o final da página (garante ativação do último item)
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+      if (isAtBottom) {
+        setActiveSection('integrations');
+        return;
+      }
+
+      const scrollPosition = window.scrollY + 200; // Threshold aumentado para detecção mais antecipada
 
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
@@ -25,21 +43,18 @@ function Header({ scrolled }) {
           }
         }
       }
-
-      if (window.scrollY < 300) {
-        setActiveSection('');
-      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Atualiza o slider quando a seção ativa muda
   useEffect(() => {
-    updateSlider(activeSection || 'inicio');
-  }, [activeSection]);
+    if (!isHovering) {
+      updateSlider(activeSection || 'inicio');
+    }
+  }, [activeSection, isHovering]);
 
   const updateSlider = (id) => {
     const link = linksRef.current[id];
@@ -55,19 +70,28 @@ function Header({ scrolled }) {
     }
   };
 
-  const handleMouseEnter = (id) => {
-    updateSlider(id);
+  const handleMouseEnterNav = () => {
+    setIsHovering(true);
   };
 
-  const handleMouseLeave = () => {
-    updateSlider(activeSection || 'inicio');
+  const handleMouseLeaveNav = () => {
+    setIsHovering(false);
+  };
+
+  const handleMouseEnterItem = (id) => {
+    updateSlider(id);
   };
 
   const handleClick = (e, sectionId) => {
     e.preventDefault();
+
+    // Bloqueia o scroll-spy
+    isManualScroll.current = true;
+    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80; // Correspondente ao scroll-margin-top
+      const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -78,8 +102,14 @@ function Header({ scrolled }) {
         behavior: 'smooth'
       });
     }
+
     setActiveSection(sectionId);
     setIsMobileMenuOpen(false);
+
+    // Desbloqueia o scroll-spy após o tempo da animação (aprox 800ms)
+    scrollTimeout.current = setTimeout(() => {
+      isManualScroll.current = false;
+    }, 1000);
   };
 
   const toggleMobileMenu = () => {
@@ -93,9 +123,14 @@ function Header({ scrolled }) {
           <img src={logo} alt="Lemify" className="header-logo" />
         </a>
 
-        <nav className="header-nav" ref={navRef} onMouseLeave={handleMouseLeave}>
+        <nav
+          className="header-nav"
+          ref={navRef}
+          onMouseEnter={handleMouseEnterNav}
+          onMouseLeave={handleMouseLeaveNav}
+        >
           <div
-            className="nav-slider"
+            className={`nav-slider ${isHovering ? 'is-hovering' : ''}`}
             style={{
               transform: `translateX(${sliderStyle.left}px)`,
               width: `${sliderStyle.width}px`,
@@ -106,11 +141,16 @@ function Header({ scrolled }) {
             href="#"
             ref={el => linksRef.current['inicio'] = el}
             className={activeSection === '' ? 'active' : ''}
-            onMouseEnter={() => handleMouseEnter('inicio')}
+            onMouseEnter={() => handleMouseEnterItem('inicio')}
             onClick={(e) => {
               e.preventDefault();
+              isManualScroll.current = true;
+              if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setActiveSection('');
+              scrollTimeout.current = setTimeout(() => {
+                isManualScroll.current = false;
+              }, 1000);
             }}
           >
             Início
@@ -119,7 +159,7 @@ function Header({ scrolled }) {
             href="#features"
             ref={el => linksRef.current['features'] = el}
             className={activeSection === 'features' ? 'active' : ''}
-            onMouseEnter={() => handleMouseEnter('features')}
+            onMouseEnter={() => handleMouseEnterItem('features')}
             onClick={(e) => handleClick(e, 'features')}
           >
             Recursos
@@ -128,7 +168,7 @@ function Header({ scrolled }) {
             href="#showcase"
             ref={el => linksRef.current['showcase'] = el}
             className={activeSection === 'showcase' ? 'active' : ''}
-            onMouseEnter={() => handleMouseEnter('showcase')}
+            onMouseEnter={() => handleMouseEnterItem('showcase')}
             onClick={(e) => handleClick(e, 'showcase')}
           >
             Agentes de IA
@@ -137,12 +177,13 @@ function Header({ scrolled }) {
             href="#integrations"
             ref={el => linksRef.current['integrations'] = el}
             className={activeSection === 'integrations' ? 'active' : ''}
-            onMouseEnter={() => handleMouseEnter('integrations')}
+            onMouseEnter={() => handleMouseEnterItem('integrations')}
             onClick={(e) => handleClick(e, 'integrations')}
           >
             Integrações
           </a>
         </nav>
+
 
         <div className="header-actions">
           <a className="btn btn-outline" href="https://app.lemify.com.br/login">
@@ -163,10 +204,16 @@ function Header({ scrolled }) {
         <nav className="mobile-nav">
           <a href="#" className={activeSection === '' ? 'active' : ''} onClick={(e) => {
             e.preventDefault();
+            isManualScroll.current = true;
+            if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
             window.scrollTo({ top: 0, behavior: 'smooth' });
             setActiveSection('');
             setIsMobileMenuOpen(false);
+            scrollTimeout.current = setTimeout(() => {
+              isManualScroll.current = false;
+            }, 1000);
           }}>Início</a>
+
           <a href="#features" className={activeSection === 'features' ? 'active' : ''} onClick={(e) => handleClick(e, 'features')}>Recursos</a>
           <a href="#showcase" className={activeSection === 'showcase' ? 'active' : ''} onClick={(e) => handleClick(e, 'showcase')}>Agentes de IA</a>
           <a href="#integrations" className={activeSection === 'integrations' ? 'active' : ''} onClick={(e) => handleClick(e, 'integrations')}>Integrações</a>
