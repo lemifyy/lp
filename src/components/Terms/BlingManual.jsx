@@ -76,6 +76,15 @@ const BlingManual = () => {
                     para criar sua conta.
                 </p>
 
+                <a 
+                    href="https://app.lemify.com.br/signup" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="btn btn-secondary create-account-margin"
+                >
+                    Criar minha conta
+                </a>
+
                 <h3>Configuração Final</h3>
 
                 <ul>

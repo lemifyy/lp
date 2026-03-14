@@ -52,7 +52,7 @@ function Integrations() {
                         Experimente por 30 dias
                     </a>
                     <div style={{ marginTop: '20px' }}>
-                        <a href="/integracao/bling" className="text-link">
+                        <a href="/manual/bling" className="text-link">
                             Ver manual de integração Bling
                         </a>
                     </div>

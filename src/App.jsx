@@ -58,7 +58,7 @@ function App() {
     return <LGPD />;
   }
 
-  if (path === '/integracao/bling') {
+  if (path === '/manual/bling') {
     return <BlingManual />;
   }
 
