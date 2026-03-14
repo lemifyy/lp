@@ -12,6 +12,7 @@ import ScrollToTop from './components/Common/ScrollToTop.jsx'
 import Terms from './components/Terms/Terms.jsx'
 import Privacy from './components/Terms/Privacy.jsx'
 import LGPD from './components/Terms/LGPD.jsx'
+import BlingManual from './components/Terms/BlingManual.jsx'
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,6 +56,10 @@ function App() {
 
   if (path === '/lgpd') {
     return <LGPD />;
+  }
+
+  if (path === '/integracao/bling') {
+    return <BlingManual />;
   }
 
   return (

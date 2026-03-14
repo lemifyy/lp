@@ -51,6 +51,11 @@ function Integrations() {
                     <a href="https://app.lemify.com.br/signup" className="btn btn-primary btn-lg">
                         Experimente por 30 dias
                     </a>
+                    <div style={{ marginTop: '20px' }}>
+                        <a href="/integracao/bling" className="text-link">
+                            Ver manual de integração Bling
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
