@@ -50,7 +50,7 @@ function Footer() {
           <div className="footer-links">
             <div className="footer-links-title">Suporte</div>
             <a href="#">Central de ajuda</a>
-            <a href="/manual/bling">Manual Bling</a>
+
             <a href="https://wa.me/5511957839501" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
             <a href="mailto:suporte@lemify.com.br">Email de suporte</a>
           </div>
